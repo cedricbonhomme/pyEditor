@@ -4,7 +4,7 @@
 __author__ = "Cedric Bonhomme"
 __version__ = "$Revision: 1.2 $"
 __date__ = "$Date: 2002/01/17 21:37 $"
-__revision__ = "$Date: 2002/01/18 $"
+__revision__ = "$Date: 2002/02/03 $"
 __copyright__ = "Copyright (c) 2002 Cedric Bonhomme"
 __license__ = "Python"
 
@@ -115,7 +115,7 @@ class editeur:
         nBou = len(self.images)
         self.photoI =[None]*nBou
         for b in range(nBou):
-            # Cr�ation de l'ic�ne (objet PhotoImage Tkinter) :
+            # Création de l'icône (objet PhotoImage Tkinter) :
             self.photoI[b] =PhotoImage(file = self.images[b] +'.gif')
             bou = Button(self.toolsbar, image =self.photoI[b], relief =GROOVE,
                          command = self.action(b))
