@@ -4,13 +4,13 @@
 __author__ = "Cedric Bonhomme"
 __version__ = "$Revision: 1.2 $"
 __date__ = "$Date: 2002/01/17 21:37 $"
-__revision__ = "$Date: 2002/02/03 $"
+__revision__ = "$Date: 2016/10/07 $"
 __copyright__ = "Copyright (c) 2002 Cedric Bonhomme"
 __license__ = "Python"
 
 import os
-from Tkinter import *
-import tkFileDialog
+from tkinter import *
+import tkinter.filedialog
 
 class editeur:
     def __init__(self):
@@ -27,10 +27,10 @@ class editeur:
         self.statusbar.pack(side=BOTTOM, fill=X)
 
         self.product_dir = os.getcwd()
-        print "Dossier de travail : " + self.product_dir
-        print self.root.cget("width")
-        print self.root.cget("height")
-        print "Encodage par défaut : " + sys.getdefaultencoding()
+        print("Dossier de travail : " + self.product_dir)
+        print(self.root.cget("width"))
+        print(self.root.cget("height"))
+        print("Encodage par défaut : " + sys.getdefaultencoding())
 
         self.images =('./images/filenew','./images/closefile',
                       './images/fileopen','./images/filesave',
@@ -153,7 +153,7 @@ class editeur:
         self.createText()
         title = "Nouveau - pyEditeur"
         self.root.title(title)
-        print "Nouveau fichier"
+        print("Nouveau fichier")
 
     def fermer(self):
         try:
@@ -161,18 +161,18 @@ class editeur:
         except AttributeError:
             pass
         self.root.title(windowTitle)
-        print "Fermeture de fichier"
+        print("Fermeture de fichier")
 
     def imprimer(self):
         """ """
 
     def apropos(self):
-        print "-= pyEditeur =-"
-        print "Editeur de texte Python V 1.0"
-        print "Auteur : Cedric Bonhomme"
+        print("-= pyEditeur =-")
+        print("Editeur de texte Python V 1.0")
+        print("Auteur : Cedric Bonhomme")
 
     def sauver(self):
-        file = tkFileDialog.asksaveasfile(parent=self.root,
+        file = tkinter.filedialog.asksaveasfile(parent=self.root,
                                           filetypes=self.formats,
                                           title="Enregistrer le fichier",
                                           mode='w')
@@ -182,23 +182,23 @@ class editeur:
                 file.write('%s' % texte)
                 file.close()
             except :
-                print "Erreur d'ecriture !"
+                print("Erreur d'ecriture !")
             (filepath, filename) = os.path.split(file.name)
             title = filename + " - pyEditeur"
             self.root.title(title)
-            print "Sauvegarde dans %s" % file.name
+            print("Sauvegarde dans %s" % file.name)
 
     def ouvrir(self):
-        file = tkFileDialog.askopenfile(parent=self.root,
+        file = tkinter.filedialog.askopenfile(parent=self.root,
                                         filetypes=self.formats,
-                                        mode='rb',
+                                        mode='r',
                                         title='Ouvrir un document')
         if file != None:
             try:
                 data = file.read()
                 file.close()
             except:
-                print "Erreur de lecture !"
+                print("Erreur de lecture !")
             l = 0
             for lines in data:
                 l = l+1
@@ -210,10 +210,10 @@ class editeur:
             (filepath, filename) = os.path.split(file.name)
             title = filename + " - pyEditeur"
             self.root.title(title)
-            print "Ouverture de fichier ..."
-            print "Octets lu du fichier %s : %d octets." % \
-                    (filename, len(data))
-            print "Chemin : " + filepath
+            print("Ouverture de fichier ...")
+            print("Octets lu du fichier %s : %d octets." % \
+                    (filename, len(data)))
+            print("Chemin : " + filepath)
 
     def couper(self):
         self.root.text.selection_clear()
@@ -221,7 +221,7 @@ class editeur:
 
 if __name__ == '__main__':
     windowTitle = "pyEditeur"
-    print "-= pyEditeur =-"
-    print "Editeur de texte Python V 1.0"
-    print "Auteur : Cedric Bonhomme"
+    print("-= pyEditeur =-")
+    print("Editeur de texte Python V 1.0")
+    print("Auteur : Cedric Bonhomme")
     f = editeur()
