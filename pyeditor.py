@@ -1,21 +1,21 @@
 #!/usr/bin/env python
-# -*- coding: utf_8 -*-
+# -*- coding: utf-8 -*-
 
 __author__ = "Cedric Bonhomme"
-__version__ = "$Revision: 1.2 $"
+__version__ = "$Revision: 1.2.2 $"
 __date__ = "$Date: 2002/01/17 21:37 $"
-__revision__ = "$Date: 2016/10/07 $"
-__copyright__ = "Copyright (c) 2002 Cedric Bonhomme"
-__license__ = "Python"
+__revision__ = "$Date: 2016/10/20 $"
+__copyright__ = "Copyright (c) 2002-2016 Cedric Bonhomme"
+__license__ = "GPLv3"
 
 import os
 from tkinter import *
 import tkinter.filedialog
 
-class editeur:
-    def __init__(self):
+class Editor:
+    def __init__(self, window_title):
         self.root = Tk()
-        self.root.title(windowTitle)
+        self.root.title(window_title)
         self.root.minsize(width=500,height=500)
         self.root.configure(width=5000,height=5000)
 
@@ -27,10 +27,10 @@ class editeur:
         self.statusbar.pack(side=BOTTOM, fill=X)
 
         self.product_dir = os.getcwd()
-        print("Dossier de travail : " + self.product_dir)
+        print("Working directory: " + self.product_dir)
         print(self.root.cget("width"))
         print(self.root.cget("height"))
-        print("Encodage par défaut : " + sys.getdefaultencoding())
+        print("Default encoding: " + sys.getdefaultencoding())
 
         self.images =('./images/filenew','./images/closefile',
                       './images/fileopen','./images/filesave',
@@ -220,8 +220,6 @@ class editeur:
 
 
 if __name__ == '__main__':
-    windowTitle = "pyEditeur"
-    print("-= pyEditeur =-")
-    print("Editeur de texte Python V 1.0")
-    print("Auteur : Cedric Bonhomme")
-    f = editeur()
+    print("Python text editor - {version}".format(version=__revision__))
+    print("Author : Cedric Bonhomme")
+    f = Editor("pyEditor")
