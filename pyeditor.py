@@ -14,8 +14,10 @@ import tkinter.filedialog
 
 class Editor:
     def __init__(self, window_title):
+        self.window_title = window_title
+
         self.root = Tk()
-        self.root.title(window_title)
+        self.root.title(self.window_title)
         self.root.minsize(width=500,height=500)
         self.root.configure(width=5000,height=5000)
 
@@ -160,7 +162,7 @@ class Editor:
             self.root.textboxFrame.destroy()
         except AttributeError:
             pass
-        self.root.title(windowTitle)
+        self.root.title(self.window_title)
         print("Fermeture de fichier")
 
     def imprimer(self):
